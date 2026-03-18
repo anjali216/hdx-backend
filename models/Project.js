@@ -1,16 +1,12 @@
 import mongoose from "mongoose";
 
 const projectSchema = new mongoose.Schema({
-  name: String,
-  description: String,
-  manager: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
-  employees: [{ type: mongoose.Schema.Types.ObjectId, ref: "Employee" }],
-  deadline: Date,
-  status: {
-    type: String,
-    enum: ["active", "completed", "onhold"],
-    default: "active"
-  }
+  title: { type: String, required: true },
+  description: { type: String },
+  status: { type: String, default: "active" },
+  startDate: { type: String },
+  endDate: { type: String },
+  assignedTo: [{ type: mongoose.Schema.Types.ObjectId, ref: "Employee" }],
 }, { timestamps: true });
 
 export default mongoose.model("Project", projectSchema);

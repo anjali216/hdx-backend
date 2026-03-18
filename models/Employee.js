@@ -1,14 +1,14 @@
 import mongoose from "mongoose";
 
 const employeeSchema = new mongoose.Schema({
-  name: String,
-  email: String,
-  phone: String,
-  department: String,
-  role: String,
-  salary: Number,
-  joiningDate: Date,
-  profileImage: String
+  name: { type: String, required: true },
+  email: { type: String, required: true, unique: true },
+  phone: { type: String },
+  department: { type: String },
+  role: { type: String },
+  salary: { type: String },
+  joiningDate: { type: String },
+  profileImage: { type: String },
 }, { timestamps: true });
 
 export default mongoose.model("Employee", employeeSchema);
